@@ -1,0 +1,52 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f7f2;
+  color: #333;
+  padding: 1rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #4a342e;
+  margin-bottom: 1rem;
+}
+
+.section {
+  margin: 1rem 0;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button-group button {
+  flex: 1 1 auto;
+  padding: 10px;
+  background: #d9c7b8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button-group button:hover {
+  background: #e9d8c3;
+}
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#storyContainer {
+  margin-top: 1.5rem;
+  background: #fff7e9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
