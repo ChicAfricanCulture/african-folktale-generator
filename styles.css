@@ -1,52 +1,89 @@
+:root {
+  --terracotta: #d8573b;
+  --ochre: #c79642;
+  --mudcloth-beige: #f4e9dc;
+  --malachite: #0b7a53;
+  --indigo: #2e2b5f;
+  --gold: #c0a45c;
+  --accent-border: #874d2d;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f9f7f2;
-  color: #333;
+  background-color: var(--mudcloth-beige);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Bogolanfini_motif.svg');
+  background-size: 300px;
+  background-blend-mode: multiply;
+  color: #2e2b5f;
   padding: 1rem;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
 }
 
 h1 {
   text-align: center;
-  color: #4a342e;
+  color: var(--indigo);
   margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .section {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 8px;
 }
 
 .button-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .button-group button {
   flex: 1 1 auto;
-  padding: 10px;
-  background: #d9c7b8;
-  border: none;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border: 2px solid var(--accent-border);
+  background: linear-gradient(to bottom, var(--mudcloth-beige), var(--terracotta));
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  color: var(--indigo);
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  background-blend-mode: overlay;
 }
 
 .button-group button:hover {
-  background: #e9d8c3;
+  background: linear-gradient(to bottom, var(--ochre), var(--gold));
+  color: var(--malachite);
+  transform: scale(1.03);
 }
 
-select, button {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
+.button-group button.active {
+  background: var(--malachite);
+  color: white;
+  border-color: var(--gold);
 }
 
 #storyContainer {
   margin-top: 1.5rem;
   background: #fff7e9;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  border: 1px solid #e1d8c3;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  line-height: 1.6;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

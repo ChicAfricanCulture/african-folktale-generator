@@ -1,41 +1,64 @@
 // Holiday list
 const holidays = [
-  "Christmas", 
-  "New Year's", 
-  "Independence Day", 
-  "Eid al-Fitr", 
-  "Africa Day",
-  "Day of the African Child",
-  "Halloween"
+  "Eid al-Fitr",
+  "Eid al-Adha",
+  "Human Rights Day",
+  "Rosh Hashanah",
+  "Diwali",
+  "Meskel",
+  "Christmas",
+  "New Year's",
+  "Easter",
+  "New Yam Festival",
+  "Boxing Day"
 ];
 
-// Culture & content pools
-const cultures = {
-  "yoruba-lagos": {
-    name: "Yoruba (Lagos, Nigeria)",
-    mythFigures: ["Oshun", "Shango", "Babalawo Ajala"],
-    characters: ["Adewale", "Bimpe", "Sade", "Obafemi"],
-    settings: [
-      "the bustling Marina market",
-      "under the Oba’s palace verandah",
-      "along the Third Mainland Bridge at dusk"
-    ],
-    objects: ["a beaded calabash", "Adire cloth", "a brass gong"]
+// Region settings with poetic imagery
+const regions = {
+  "west": {
+    label: "West Africa",
+    settings: ["the golden-sanded shores of Ghana", "the Niger River delta under twilight"],
+    characters: ["Ayo", "Kweku", "Nneka", "Tunde"],
+    mythFigures: ["Anansi", "Mami Wata", "Eji", "Yemoja"],
+    objects: ["a calabash of gold dust", "a faded kente cloth", "a talking drum"]
   },
-  "akan-kumasi": {
-    name: "Akan (Kumasi, Ghana)",
-    mythFigures: ["Anansi the Spider", "Nyame the Sky God", "Bastiat the wise tortoise"],
-    characters: ["Kofi", "Esi", "Yaw", "Ama"],
-    settings: [
-      "the golden clan-palace courtyard",
-      "beneath the sacred mango tree",
-      "in Kumasi market at dawn"
-    ],
-    objects: ["a carved stool", "woven kente cloth", "a horn of plenty"]
+  "east": {
+    label: "East Africa",
+    settings: ["the vast Serengeti plains", "the great lakes region misted with dawn"],
+    characters: ["Asha", "Juma", "Nuru", "Makena"],
+    mythFigures: ["The Hare", "Kalulu", "Zamani spirits"],
+    objects: ["a carved wooden lion", "a sun-warmed stone", "a beaded necklace"]
+  },
+  "north": {
+    label: "North Africa",
+    settings: ["the endless Sahara dunes", "the ancient Mediterranean coast"],
+    characters: ["Zahra", "Khalid", "Samira", "Omar"],
+    mythFigures: ["Djinn of the Desert", "The Old Magi"],
+    objects: ["a silver scimitar", "a desert rose", "a scroll sealed with wax"]
+  },
+  "south": {
+    label: "South Africa",
+    settings: ["the dramatic Drakensberg mountains", "the vibrant Highveld at dusk"],
+    characters: ["Thabo", "Lerato", "Zanele", "Sipho"],
+    mythFigures: ["Modjadji the Rain Queen", "Tokoloshe", "Sangoma Elder"],
+    objects: ["a rainmaker’s staff", "a beadwork sash", "a clay pot steaming with dreams"]
+  },
+  "central": {
+    label: "Central Africa",
+    settings: ["the dense Congo rainforest", "the mighty Congo River basin"],
+    characters: ["Mbali", "Kazi", "Etienne", "Nia"],
+    mythFigures: ["The Forest Spirit", "Leopard Woman", "Ancient Elder"],
+    objects: ["a sacred vine", "a mask of fireflies", "a storyteller’s flute"]
+  },
+  "madagascar": {
+    label: "Madagascar (Islands)",
+    settings: ["the baobab forests shimmering in moonlight", "the rugged highlands kissed by morning mist"],
+    characters: ["Rivo", "Soa", "Tahina", "Nomena"],
+    mythFigures: ["The Lamba Weaver", "The Sea Serpent", "The Island Whisperer"],
+    objects: ["a talisman of seashells", "a ceremonial lamba", "a map inked on bark"]
   }
 };
 
-// Themes and story elements
 const themes = {
   kindness: {
     proverbs: [
@@ -43,31 +66,31 @@ const themes = {
       "Give freely, and the river of fortune will never dry."
     ],
     conflicts: [
-      "a lost gift",
-      "a starving neighbor",
-      "a broken promise"
-    ]
-  },
-  community: {
-    proverbs: [
-      "If you want to go fast, go alone. If you want to go far, go together.",
-      "It takes a village to raise a child."
-    ],
-    conflicts: [
-      "a village feast delayed",
-      "a communal drum stolen",
-      "a drought that tests everyone"
+      "a starving stranger at the gates",
+      "a sacred object lost in the dark",
+      "a rival in need during the feast"
     ]
   },
   wisdom: {
     proverbs: [
-      "Only a fool tests the depth of a river with no feet.",
-      "Wisdom is the shield of the weak."
+      "Wisdom is the shield of the weak.",
+      "Only the listening ear hears the ancestors."
     ],
     conflicts: [
-      "a warrior without foresight",
-      "a youth ignoring the elders",
-      "a trickster outwitting the strong"
+      "a test of truth in the market square",
+      "a mysterious riddle from a spirit",
+      "a dispute over who holds the ancient memory"
+    ]
+  },
+  belonging: {
+    proverbs: [
+      "Even the lone tree leans toward the forest.",
+      "Where your story is told, your soul is home."
+    ],
+    conflicts: [
+      "a child seeking a name",
+      "a return to the forgotten village",
+      "a traveler who has forgotten their language"
     ]
   }
 };
@@ -76,25 +99,26 @@ function getRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateStory(holiday, cultureKey, themeKey) {
-  const culture = cultures[cultureKey];
+function generateStory(holiday, regionKey, themeKey) {
+  const region = regions[regionKey];
   const theme = themes[themeKey];
 
-  const setting = getRandom(culture.settings);
-  const character = getRandom(culture.characters);
-  const myth = getRandom(culture.mythFigures);
-  const object = getRandom(culture.objects);
+  const setting = getRandom(region.settings);
+  const character = getRandom(region.characters);
+  const myth = getRandom(region.mythFigures);
+  const object = getRandom(region.objects);
   const conflict = getRandom(theme.conflicts);
   const proverb = getRandom(theme.proverbs);
 
   return `
-    <p>During <strong>${holiday}</strong> in ${culture.name}, in ${setting}, 
-    a person named <strong>${character}</strong> held ${object} tightly.</p>
-    
-    <p>They were trying to resolve ${conflict}, when the spirit <strong>${myth}</strong> appeared and tested their heart.</p>
-    
-    <p>Through wisdom, courage, and compassion, <strong>${character}</strong> prevailed.</p>
-    
+    <p><strong>During ${holiday}</strong> in <em>${region.label}</em>, among ${setting}, lived ${character}, 
+    who carried with them ${object}—a gift passed down like a whisper.</p>
+
+    <p>But this was no ordinary celebration. ${character} faced ${conflict}, and the winds of the ancestors grew still. 
+    Then appeared <strong>${myth}</strong>, not with anger, but with a question: “What will you give when giving costs everything?”</p>
+
+    <p>The night echoed with the clatter of decisions. ${character} chose heart over fear.</p>
+
     <p><strong>Moral:</strong> "${proverb}"</p>
   `;
 }
