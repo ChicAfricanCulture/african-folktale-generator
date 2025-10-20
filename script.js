@@ -25,27 +25,52 @@ document.addEventListener("DOMContentLoaded", () => {
     "Boxing Day": "#d1e9e5"
   };
 
-  holidays.forEach(h => {
-    const btn = document.createElement("button");
-    btn.textContent = h;
-    btn.onclick = () => {
-      selectedHoliday = h;
-      document.body.style.backgroundColor = holidayColors[h] || "#f4e9dc";
-      [...holidayButtonsDiv.children].forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-    };
-    holidayButtonsDiv.appendChild(btn);
-  });
+  const holidayRegions = {
+    "Eid al-Fitr": ["west", "north", "east"],
+    "Eid al-Adha": ["west", "north", "east"],
+    "Human Rights Day": ["south", "west", "east"],
+    "Rosh Hashanah": ["north"],
+    "Diwali": ["east", "south"],
+    "Meskel": ["east"],
+    "Christmas": ["west", "east", "south", "central", "madagascar"],
+    "New Year's": ["west", "east", "south", "north", "central", "madagascar"],
+    "Easter": ["west", "east", "south", "central", "madagascar"],
+    "New Yam Festival": ["west"],
+    "Boxing Day": ["west", "south"]
+  };
+
+  function renderHolidayButtons(regionKey) {
+    holidayButtonsDiv.innerHTML = "";
+    const note = document.createElement("p");
+    note.innerHTML = `Holidays traditionally observed in <strong>${regionSelect.options[regionSelect.selectedIndex].text}</strong>:`;
+    holidayButtonsDiv.appendChild(note);
+
+    const filtered = holidays.filter(h => holidayRegions[h].includes(regionKey));
+    filtered.forEach(h => {
+      const btn = document.createElement("button");
+      btn.textContent = h;
+      btn.onclick = () => {
+        selectedHoliday = h;
+        document.body.style.backgroundColor = holidayColors[h] || "#f4e9dc";
+        [...holidayButtonsDiv.querySelectorAll("button")].forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      };
+      holidayButtonsDiv.appendChild(btn);
+    });
+  }
+
+  regionSelect.onchange = () => {
+    selectedHoliday = null;
+    renderHolidayButtons(regionSelect.value);
+  };
 
   generateBtn.onclick = () => {
     const regionKey = regionSelect.value;
     const themeKey = themeSelect.value;
-
     if (!selectedHoliday || !regionKey || !themeKey) {
       alert("Please select a holiday, region, and theme.");
       return;
     }
-
     const story = generateStory(selectedHoliday, regionKey, themeKey);
     storyContainer.innerHTML = story;
     lastStory = story;
@@ -57,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
   remixBtn.onclick = () => {
     const regionKey = regionSelect.value;
     const themeKey = themeSelect.value;
-
     const story = generateStory(selectedHoliday, regionKey, themeKey);
     storyContainer.innerHTML = story;
     lastStory = story;
@@ -65,13 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   readAloudBtn.onclick = () => {
     if (!lastStory) return;
-    const utter = new SpeechSynthesisUtterance(lastStory.replace(/<[^>]+>/g, ""));
+    const utter = new SpeechSynthesisUtterance(lastStory.replace(/<[^>]+>/g,""));
     speechSynthesis.speak(utter);
   };
 
   shareBtn.onclick = () => {
     navigator.clipboard.writeText(
-      lastStory.replace(/<br>/g, "\n").replace(/<[^>]+>/g, "")
+      lastStory.replace(/<br>/g,"\n").replace(/<[^>]+>/g,"")
     ).then(() => {
       alert("Story copied to clipboard!");
     }).catch(err => {

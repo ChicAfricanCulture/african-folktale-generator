@@ -17,7 +17,7 @@ const holidays = [
 const regions = {
   "west": {
     label: "West Africa",
-    settings: ["the golden-sanded shores of Ghana", "the Niger River delta under twilight"],
+    settings: ["the golden‑sanded shores of Ghana", "the Niger River delta under twilight"],
     characters: ["Ayo", "Kweku", "Nneka", "Tunde"],
     mythFigures: ["Anansi", "Mami Wata", "Eji", "Yemoja"],
     objects: ["a calabash of gold dust", "a faded kente cloth", "a talking drum"]
@@ -27,7 +27,7 @@ const regions = {
     settings: ["the vast Serengeti plains", "the great lakes region misted with dawn"],
     characters: ["Asha", "Juma", "Nuru", "Makena"],
     mythFigures: ["The Hare", "Kalulu", "Zamani spirits"],
-    objects: ["a carved wooden lion", "a sun-warmed stone", "a beaded necklace"]
+    objects: ["a carved wooden lion", "a sun‑warmed stone", "a beaded necklace"]
   },
   "north": {
     label: "North Africa",
