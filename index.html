@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>African Holiday Folktale Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <h1>African Holiday Folktale Generator</h1>
 
   <div class="section">
-    <label>Choose a Holiday:</label>
+    <label><strong>Select a Holiday:</strong></label>
     <div id="holidayButtons" class="button-group"></div>
   </div>
 
   <div class="section">
-    <label>Choose a Culture/Location:</label>
+    <label for="cultureSelect"><strong>Select a Region:</strong></label>
     <select id="cultureSelect">
-      <option value="">-- Select --</option>
-      <option value="yoruba-lagos">Yoruba (Lagos, Nigeria)</option>
-      <option value="akan-kumasi">Akan (Kumasi, Ghana)</option>
+      <option value="">-- Choose a Region --</option>
+      <option value="west">West Africa</option>
+      <option value="east">East Africa</option>
+      <option value="north">North Africa</option>
+      <option value="south">South Africa</option>
+      <option value="central">Central Africa</option>
+      <option value="madagascar">Madagascar (Islands)</option>
     </select>
   </div>
 
   <div class="section">
-    <label>Choose a Theme:</label>
+    <label for="themeSelect"><strong>Select a Theme:</strong></label>
     <select id="themeSelect">
-      <option value="">-- Select --</option>
+      <option value="">-- Choose a Theme --</option>
       <option value="kindness">Kindness</option>
-      <option value="community">Community</option>
       <option value="wisdom">Wisdom</option>
+      <option value="belonging">Belonging</option>
     </select>
   </div>
 
-  <button id="generateBtn">Tell Me a Story</button>
-  <button id="remixBtn" disabled>Remix This Story</button>
+  <div class="section">
+    <button id="generateBtn">Generate Story</button>
+    <button id="remixBtn" disabled>Remix</button>
+    <button id="readAloudBtn" disabled>Read Aloud</button>
+    <button id="shareBtn" disabled>Copy</button>
+  </div>
 
   <div id="storyContainer"></div>
 
-  <button id="readAloudBtn" disabled> Read Aloud</button>
-  <button id="shareBtn" disabled> Copy Story</button>
-
   <script src="content.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
