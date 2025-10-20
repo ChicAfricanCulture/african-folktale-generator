@@ -1,35 +1,47 @@
 :root {
-  --terracotta: #d8573b;
-  --ochre: #c79642;
-  --mudcloth-beige: #f4e9dc;
-  --malachite: #0b7a53;
-  --indigo: #2e2b5f;
-  --gold: #c0a45c;
-  --accent-border: #874d2d;
+  /* Desert Sands & Earth */
+  --sand-dune: #e2d8c8;
+  --warm-clay: #b8a38d;
+  --sun-baked: #9c8a78;
+  
+  /* Oasis Waters & Life */
+  --oasis-teal: #7a9d96;
+  --deep-oasis: #5a7a7a;
+  --oasis-accent: #8db1a7;
+  
+  /* Neutral & Text Colors */
+  --dark-sienna: #3e2d2a;
+  --soft-umber: #6b5b54;
+  
+  /* Accents */
+  --gold-highlight: #b5a982;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--mudcloth-beige);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--sand-dune);
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/5b/Bogolanfini_motif.svg');
   background-size: 300px;
-  background-blend-mode: multiply;
-  color: #2e2b5f;
+  background-blend-mode: overlay;
+  background-opacity: 0.1;
+  color: var(--dark-sienna);
   padding: 1rem;
   max-width: 800px;
   margin: auto;
+  line-height: 1.6;
 }
 
 h1 {
   text-align: center;
-  color: var(--indigo);
-  margin-bottom: 1rem;
-  font-weight: bold;
+  color: var(--deep-oasis);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
   font-size: 1.8rem;
+  letter-spacing: 0.5px;
 }
 
 .section {
-  margin: 1.5rem 0;
+  margin: 1.8rem 0;
 }
 
 select, button {
@@ -38,6 +50,8 @@ select, button {
   font-size: 1rem;
   margin-top: 0.5rem;
   border-radius: 8px;
+  border: 1px solid var(--warm-clay);
+  box-sizing: border-box;
 }
 
 .button-group {
@@ -48,42 +62,46 @@ select, button {
 
 .button-group button {
   flex: 1 1 auto;
-  padding: 10px 15px;
-  border: 2px solid var(--accent-border);
-  background: linear-gradient(to bottom, var(--mudcloth-beige), var(--terracotta));
-  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--warm-clay);
+  background: linear-gradient(to bottom, var(--sand-dune), var(--warm-clay));
+  border-radius: 8px;
   font-family: 'Segoe UI', sans-serif;
-  font-weight: bold;
-  color: var(--indigo);
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  color: var(--dark-sienna);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.3s ease;
-  background-blend-mode: overlay;
 }
 
 .button-group button:hover {
-  background: linear-gradient(to bottom, var(--ochre), var(--gold));
-  color: var(--malachite);
-  transform: scale(1.03);
+  background: linear-gradient(to bottom, var(--oasis-accent), var(--deep-oasis));
+  color: white;
+  border-color: var(--deep-oasis);
+  transform: translateY(-2px);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .button-group button.active {
-  background: var(--malachite);
+  background: var(--deep-oasis);
   color: white;
-  border-color: var(--gold);
+  border-color: var(--oasis-accent);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #storyContainer {
-  margin-top: 1.5rem;
-  background: #fff7e9;
-  padding: 20px;
+  margin-top: 1.8rem;
+  background: linear-gradient(to bottom right, #f8f4ee, #f0eae1);
+  padding: 24px;
   border-radius: 10px;
-  border: 1px solid #e1d8c3;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  line-height: 1.6;
+  border: 1px solid var(--warm-clay);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  line-height: 1.7;
+  color: var(--soft-umber);
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  background: linear-gradient(to bottom, #d1c9bc, #c4baaa);
 }
